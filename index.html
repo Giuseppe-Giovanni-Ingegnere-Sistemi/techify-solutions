@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techify Solutions MX</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #ffffff;
+            padding-bottom: 130px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        /* Video de fondo */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Secciones */
+        section {
+            padding: 80px 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff6b6b;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: #ff4757;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.2);
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #ff6b6b;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+        }
+
+        /* Formularios */
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            background-color: #f8f8f8;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #ff6b6b;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background-color: #ff4757;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Portafolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.2);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .portfolio-content {
+            padding: 20px;
+        }
+
+        .portfolio-content h3 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            color: #ff4757;
+        }
+
+        /* Planes de reparación */
+        .repair-plans {
+            background-color: #f8f8f8;
+            padding: 60px 0;
+        }
+
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .plan-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.2);
+        }
+
+        .plan-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .plan-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .plan-features {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: #ff6b6b;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Alerta de desarrollo */
+        .dev-alert {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .dev-alert-content {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dev-alert h2 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .dev-alert p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Banner fijo */
+        .fixed-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ff6b6b;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Botón de música */
+        .music-button {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background-color: #ff6b6b;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .music-button:hover {
+            background-color: #ff4757;
+            transform: scale(1.1);
+        }
+
+        .music-button:focus {
+            outline: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .fixed-banner {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Techify Solutions MX Logo">
+                <span>Techify Solutions MX</span>
+            </a>
+            <div class="nav-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#portafolio">Portafolio</a>
+                <a href="#planes">Planes</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="" type="video/mp4">
+        Tu navegador no soporta el tag de video.
+    </video>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Bienvenido a Techify Solutions MX</h1>
+                <p>Soluciones tecnológicas profesionales a tu alcance</p>
+                <a href="#servicios" class="cta-button">Descubre Nuestros Servicios</a>
+            </div>
+        </section>
+
+        <section id="servicios">
+            <div class="container">
+                <h2>Nuestros Servicios</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Reparación de Computadoras</h3>
+                        <p>Servicio profesional de reparación para todo tipo de computadoras.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Mantenimiento de Redes</h3>
+                        <p>Instalación y mantenimiento de redes empresariales.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Desarrollo de Software</h3>
+                        <p>Soluciones de software personalizadas para su negocio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portafolio">
+            <div class="container">
+                <h2>Nuestro Portafolio</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Proyecto 1" class="portfolio-image">
+                        <div class="portfolio-content">
+                            <h3>E-commerce Moda</h3>
+                            <p>Tienda en línea para una marca de moda local con sistema de pagos integrado.</p>
+                            <a href="#" class="portfolio-link">Ver más</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Proyecto 2" class="portfolio-image">
+                        <div class="portfolio-content">
+                            <h3>App de Delivery</h3>
+                            <p>Aplicación móvil para servicio de entrega de comida a domicilio.</p>
+                            <a href="#" class="portfolio-link">Ver más</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Proyecto 3" class="portfolio-image">
+                        <div class="portfolio-content">
+                            <h3>Sistema de Gestión</h3>
+                            <p>Software de gestión empresarial para una compañía de logística.</p>
+                            <a href="#" class="portfolio-link">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="planes" class="repair-plans">
+            <div class="container">
+                <h2>Planes de Reparación</h2>
+                <div class="plans-container">
+                    <div class="plan-card">
+                        <h3>Plan Básico</h3>
+                        <div class="plan-price">$499 MXN</div>
+                        <p class="plan-description">Solución rápida para problemas menores y mantenimiento general.</p>
+                        <ul class="plan-features">
+                            <li>Diagnóstico completo</li>
+                            <li>Limpieza de hardware</li>
+                            <li>Actualización de software</li>
+                            <li>Soporte por 30 días</li>
+                        </ul>
+                        <button>Elegir Plan</button>
+                    </div>
+                    <div class="plan-card">
+                        <h3>Plan Estándar</h3>
+                        <div class="plan-price">$799 MXN</div>
+                        <p class="plan-description">Ideal para equipos con problemas moderados o que requieren optimización.</p>
+                        <ul class="plan-features">
+                            <li>Todo lo del Plan Básico</li>
+                            <li>Optimización del sistema</li>
+                            <li>Respaldo de datos</li>
+                            <li>Soporte por 60 días</li>
+                        </ul>
+                        <button>Elegir Plan</button>
+                    </div>
+                    <div class="plan-card">
+                        <h3>Plan Premium</h3>
+                        <div class="plan-price">$1,299 MXN</div>
+                        <p class="plan-description">Servicio completo para problemas complejos y equipos de alto rendimiento.</p>
+                        <ul class="plan-features">
+                            <li>Todo lo del Plan Estándar</li>
+                            <li>Reemplazo de componentes (costo adicional)</li>
+                            <li>Instalación de software especializado</li>
+                            <li>Soporte prioritario por 90 días</li>
+                        </ul>
+                        <button>Elegir Plan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <div class="container">
+                <h2>Contáctanos</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <button id="musicButton" class="music-button" aria-label="Reproducir música de fondo">
+        ♪
+    </button>
+
+    <audio id="backgroundMusic" loop>
+        <source src="Music/audio1.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <div class="fixed-banner">
+        Recogemos los equipos y damos garantía de que se realiza el trabajo, ya que aún no tenemos un local establecido.
+    </div>
+
+    <div id="dev-alert" class="dev-alert">
+        <div class="dev-alert-content">
+            <h2>Sitio en Desarrollo</h2>
+            <p>Esta página web continúa en desarrollo. Disculpe las molestias.</p>
+            <button id="close-alert">Entendido</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animación de aparición para las tarjetas de servicios y portafolio
+            const cards = document.querySelectorAll('.service-card, .portfolio-card, .plan-card');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+
+            // Manejo del formulario de contacto
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Aquí iría la lógica para enviar el formulario de contacto
+                console.log('Formulario de contacto enviado');
+                contactForm.reset();
+            });
+
+            // Alerta de desarrollo
+            const devAlert = document.getElementById('dev-alert');
+    const closeAlert = document.getElementById('close-alert');
+
+    // Verificar si la alerta ya se ha mostrado
+    if (!localStorage.getItem('alertaMostrada')) {
+        setTimeout(() => {
+            devAlert.style.display = 'flex';
+        }, 3000);
+    }
+
+    closeAlert.addEventListener('click', () => {
+        devAlert.style.display = 'none';
+        // Guardar en localStorage que la alerta ya se ha mostrado
+        localStorage.setItem('alertaMostrada', 'true');
+    });
+
+            // Scroll suave para los enlaces de navegación
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Funcionalidad para el botón de música
+            const musicButton = document.getElementById('musicButton');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            let isPlaying = false;
+
+            musicButton.addEventListener('click', function() {
+                if (isPlaying) {
+                    backgroundMusic.pause();
+                    musicButton.innerHTML = '♪';
+                    musicButton.setAttribute('aria-label', 'Reproducir música de fondo');
+                } else {
+                    backgroundMusic.play();
+                    musicButton.innerHTML = '⏸';
+                    musicButton.setAttribute('aria-label', 'Pausar música de fondo');
+                }
+                isPlaying = !isPlaying;
+            });
+        });
+    </script>
+</body>
+</html>
